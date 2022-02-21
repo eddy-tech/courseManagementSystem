@@ -23,7 +23,7 @@ Open `http://localhost:4200/`. with your browser to see the result.
 ```
 
 ## APPLICATION ACCESS
-As we can use the real API for fetch the access role for every users who want use the app, we are created some users statically in the code (course.service.ts) to authenticate and enter the application
+As we can use the real API for fetch the access role for every users who want use the app, we are created some users statically in the code (authentication.service.ts) to authenticate and enter the application
 
 The application shows how certain features are denied to a student while an instructor has the rights to its features. The DataBase is the file db.json
 
