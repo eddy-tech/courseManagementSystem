@@ -1,0 +1,93 @@
+<app-nav-bar></app-nav-bar>
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+  <ul class="navbar navbar-nav">
+    <li>
+      <button (click)="onGetAllCourse()" class="btn btn-outline-info ml-2">
+        All Course
+      </button>
+    </li>
+    <li>
+      <button
+        (click)="onGetAvailableCourse()"
+        class="btn btn-outline-info ml-2"
+      >
+        Course Available
+      </button>
+    </li>
+
+    <li>
+      <button (click)="onNewCourse()" class="btn btn-outline-info ml-2">
+        New Course
+      </button>
+    </li>
+  </ul>
+  <ul class="navbar navbar-nav ml-auto">
+    <form #f="ngForm" (ngSubmit)="onSearch(f.value)" class="d-flex">
+      <input
+        ngModel
+        class="form-control me-2 ml-5"
+        type="search"
+        name="keyword"
+        placeholder="Search"
+        aria-label="Search"
+      />
+      <button class="btn btn-success ml-2" type="submit">Search</button>
+    </form>
+  </ul>
+</nav>
+
+<div class="container">
+  <ng-container *ngIf="course$ | async as result" [ngSwitch]="result.dataState">
+    <! Result permet de retourner un objet de type AppDataState !>
+    <ng-container *ngSwitchCase="dataStateEnum.LOADING">
+      Loading ...
+    </ng-container>
+    <ng-container *ngSwitchCase="dataStateEnum.LOADER">
+      <table class="table">
+        <tr>
+          <th>Course ID</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Category</th>
+          <th>Subject</th>
+          <th>Start-end time</th>
+          <th>Number Students</th>
+          <th>Action</th>
+        </tr>
+        <tr *ngFor="let c of result.data">
+          <td>{{ c.id }}</td>
+          <td>{{ c.name }}</td>
+          <td>{{ c.description }}</td>
+          <td>{{ c.category }}</td>
+          <td>{{ c.subject }}</td>
+          <td>{{ c.startTime }}</td>
+          <td>{{ c.numberStudent }}</td>
+
+          <td>
+            <button
+              class="btn btn-danger"
+              (click)="onDelete(c)"
+              *ngIf="authService.isAdmin()"
+            >
+              <span class="fa fa-trash-o"></span>
+            </button>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary"
+              (click)="onEditCourse(c)"
+              *ngIf="authService.isAdmin()"
+            >
+              <span class="fa fa-edit"></span>
+            </button>
+          </td>
+        </tr>
+      </table>
+    </ng-container>
+    <ng-container *ngSwitchCase="dataStateEnum.ERROR">
+      <div class="alert-danger">
+        {{ result.errorMessage }}
+      </div>
+    </ng-container>
+  </ng-container>
+</div>

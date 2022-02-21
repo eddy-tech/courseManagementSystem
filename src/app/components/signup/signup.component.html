@@ -1,0 +1,83 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="signup-form">
+        <h1>REGISTER</h1>
+        <form>
+          <form
+            class="mt-5 border p-4 bg-light shadow"
+            [formGroup]="signupFormGroup"
+            (ngSubmit)="onSignUp()"
+          >
+            <div class="mb-3">
+              <label for="firstname" class="form-label">First name : </label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="firstname"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="lastname" class="form-label">Last Name: </label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="lastname"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="nickname" class="form-label">Nick Name : </label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="nickname"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="birthday" class="form-label">Birthday : </label>
+              <input
+                type="date"
+                class="form-control"
+                formControlName="birthday"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="gender" class="form-label ml-2">Gender : </label>
+              <label>
+                <input
+                  type="radio"
+                  value="Male"
+                  formControlName="gender"
+                  required
+                  class="ml-2"
+                />
+                <span>Male</span>
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  value="Female"
+                  formControlName="gender"
+                  class="ml-2"
+                  required
+                />
+                <span>Female</span>
+              </label>
+            </div>
+            <button type="submit" class="btn btn-success float-end ml-2">
+              Login
+            </button>
+          </form>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

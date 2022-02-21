@@ -1,0 +1,146 @@
+<app-nav-bar></app-nav-bar>
+<div class="container" *ngIf="courseFormGroup">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="signup-form">
+        <form
+          action=""
+          class="mt-5 border p-4 bg-light shadow"
+          [formGroup]="courseFormGroup"
+        >
+          <h4 class="mb-5 text-secondary">Create New Course</h4>
+          <div class="row">
+            <div class="mb-3 col-md-6">
+              <label>Name : <span class="text-danger">*</span></label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter Course Name"
+                formControlName="name"
+                [ngClass]="{
+          'is-invalid': submitted && courseFormGroup.controls?.['name']
+      }"
+              />
+              <div
+                *ngIf="submitted && courseFormGroup.controls?.['name']"
+                class="invalid-feedback"
+              >
+                Course Name is required
+              </div>
+            </div>
+
+            <div class="mb-3 col-md-6">
+              <label>Description : <span class="text-danger">*</span></label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter Description"
+                formControlName="description"
+                [ngClass]="{
+          'is-invalid': submitted && courseFormGroup.controls?.['description']
+      }"
+              />
+              <div
+                *ngIf="submitted && courseFormGroup.controls?.['description']"
+                class="invalid-feedback"
+              >
+                Description is required
+              </div>
+            </div>
+
+            <div class="mb-3 col-md-12">
+              <label>Category<span class="text-danger">*</span></label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter Category"
+                formControlName="category"
+                [ngClass]="{
+          'is-invalid': submitted && courseFormGroup.controls?.['category']
+      }"
+              />
+              <div
+                *ngIf="submitted && courseFormGroup.controls?.['category']"
+                class="invalid-feedback"
+              >
+                Category is required
+              </div>
+            </div>
+            <div class="mb-3 col-md-12">
+              <label>Subject<span class="text-danger">*</span></label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter Subject"
+                formControlName="subject"
+                [ngClass]="{
+          'is-invalid': submitted && courseFormGroup.controls?.['subject']
+      }"
+              />
+              <div
+                *ngIf="submitted && courseFormGroup.controls?.['subject']"
+                class="invalid-feedback"
+              >
+                Subject is required
+              </div>
+            </div>
+            <div class="mb-3 col-md-12">
+              <label>Start-end time : <span class="text-danger">*</span></label>
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Enter Start-end Time"
+                formControlName="startTime"
+                [ngClass]="{
+          'is-invalid': submitted && courseFormGroup.controls?.['startTime']
+      }"
+              />
+              <div
+                *ngIf="submitted && courseFormGroup.controls?.['startTime']"
+                class="invalid-feedback"
+              >
+                Start-end Time is required
+              </div>
+            </div>
+            <div class="mb-3 col-md-12">
+              <label
+                >Number of students<span class="text-danger">*</span></label
+              >
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Enter number of students"
+                formControlName="numberStudent"
+                [ngClass]="{
+          'is-invalid': submitted && courseFormGroup.controls?.['numberStudent']
+      }"
+              />
+              <div
+                *ngIf="submitted && courseFormGroup.controls?.['numberStudent']"
+                class="invalid-feedback"
+              >
+                Number of students is required
+              </div>
+            </div>
+            <div class="mb-3 col-md-12">
+              <label>Available<span class="text-danger">*</span></label>
+              <input
+                type="checkbox"
+                formControlName="available"
+                class="form-check col-6-md"
+              />
+            </div>
+            <div class="col-md-12">
+              <button
+                class="btn btn-primary float-end ml"
+                (click)="onSaveCourse()"
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

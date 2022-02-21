@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="mt-auto">
+      <div class="card">
+        <div class="text-center">
+          <h1>LOGIN</h1>
+          <h6>Please enter your Email and Password !!</h6>
+        </div>
+        <div class="alert alert-danger" *ngIf="erreur == 1">
+          <strong>Login ou mot de passe incorrect !</strong>
+        </div>
+        <form>
+          <div class="mb-3">
+            <label class="form-label">Username :</label>
+            <input
+              type="text"
+              class="form-control"
+              [(ngModel)]="user.username"
+              name="username"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password :</label>
+            <input
+              type="password"
+              class="form-control"
+              name="password"
+              [(ngModel)]="user.password"
+            />
+          </div>
+          <div class="row justify-content-md-center">
+            <button
+              type="button"
+              class="btn btn-success"
+              (click)="onLoggedIn()"
+            >
+              Login
+            </button>
+          </div>
+        </form>
+        <!-- <a routerLink="/signup" class="text-black"
+          >New user? Click to signup !!</a
+        > -->
+      </div>
+    </div>
+  </div>
+</div>
